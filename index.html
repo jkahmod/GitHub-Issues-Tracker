@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+
+    <!-- tailwind & daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- stylesheet  -->
+     <link rel="stylesheet" href="styles.css">
+    
+    <!-- font-awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Font  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Log-in Form  -->
+    <section class="login-box w-[520px] shadow-xl mx-auto my-[50px] rounded-2xl py-5"> 
+      
+        <div class="text-center space-y-3">
+            <img class="mx-auto" src="./assets/github-logo.png" alt="">
+            <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>
+            <p>Sign in to manage your issues</p>
+        </div>
+
+        <!-- form section  -->
+        <div class="p-5 space-y-5">
+            <div  class="space-y-3" action="">
+
+                <label class="font-semibold text-black  " for="">Username</label> <br>
+
+                <input id="inpute-user" class="rounded-[10px] border-gray-300 p-3 text-[16px] w-full" type="text" placeholder="Enter Username" required >
+
+                <p class="text-[14px] text-[#4A00FF]">Default: admin</p>
+
+                <label class="font-semibold text-black  " for="">Password</label> <br>
+
+                <input id="input-pass" class="rounded-[10px] border-gray-300 p-3 text-[16px] w-full" type="password" placeholder="Enter Password" required>
+
+                <p class="text-[14px] text-[#4A00FF]">Default: admin123 </p>
+                
+                <button id="subnit-btn" class="btn btn-primary w-full"> Sign In </button>
+                   
+            </div>  
+            <br>        
+            <hr>
+            <br>
+            <div> 
+                <p class="text-center">Or</p>
+                <p class="text-center text-gray-400 text-[14px] ">Demo Credentials:</p>
+                <div class="bg-[#f8fbff] p-5 mt-2 rounded-2xl">
+                    <p class="text-center"><span class="font-semibold">Username:</span> admin </p>
+                    <p class="text-center"><span class="font-semibold">Password:</span> admin123 </p>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+
+
+    </section>
+    
+    
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
