@@ -1,4 +1,8 @@
-console.log('cannected') 
+// console.log('cannected') 
+
+const allfilterbtn = document.getElementById("btn-filter-all")
+const openfilterbtn = document.getElementById("btn-filter-open")
+const closedfilterbtn = document.getElementById("btn-filter-closed")
 
 const issuesCounter = document.getElementById("counter")
 
@@ -11,28 +15,26 @@ const loadIssuesCard = ()=> {
 })      
 }
 
-
-const allfilterbtn = document.getElementById("btn-filter-all")
-const openfilterbtn = document.getElementById("btn-filter-open")
-const closedfilterbtn = document.getElementById("btn-filter-closed")
-
-
 const displayedIssuesCard = (issues)=>{
-    // console.log(data)
+
     const issuesCard =document.getElementById("issues-card");
     
     issuesCard.innerHTML="";
-    console.log(issuesCard);
+    
     issues.forEach(card => {
-        console.log(card);  
-
+     
         const cardDiv =document.createElement("div");
-        
+             
         cardDiv.innerHTML=`
          <div class="border border-gray-200 p-5 space-y-4 shadow-sm rounded-2xl">
                   <!-- 1st  -->
                   <div class="flex justify-between"> 
-                      <p class="bg-green-100 text-green-500 rounded-full px-6 py-1 ">${card.status} </p>
+                      
+                      ${card.status === "open" ? 
+                        `<span class="text-green-500 text-2xl bg-green-100 rounded-full "><i class="fa-solid fa-spinner"></i> </span>`
+                         : 
+                         `<span class="text-purple-500 text-2xl bg-purple-100   rounded-full "><i class="fa-regular fa-circle-check"></i></span>`}
+                     
                       <p class="bg-red-100 text-red-500 rounded-full px-6 py-1">${card.priority}</p>
   
                   </div>
@@ -68,9 +70,8 @@ const displayedIssuesCard = (issues)=>{
     }); 
 }
 
-loadIssuesCard ()
+function toggleStyle(id){ 
 
-function filtering(id){
     allfilterbtn.classList.remove('bg-black','text-white')
     openfilterbtn.classList.remove('bg-black','text-white')
     closedfilterbtn.classList.remove('bg-black','text-white')
@@ -85,10 +86,42 @@ function filtering(id){
 
     selected.classList.add('bg-[#4A00FF]' , 'text-white')
     selected.classList.remove('bg-gray-300','text-black')
+
+    
+    if(id === "btn-filter-all"){
+
+        fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then(res => res.json())
+        .then((data)=>{
+            displayedIssuesCard(data.data)
+            issuesCounter.innerText = data.data.length
+        })
+
+    }
+
+    else if (id ==="btn-filter-open"){
+         fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+         .then(res=>res.json())
+         .then((data)=>{
+            const openIssues =data.data.filter(issue=> issue.status ==="open")
+
+            displayedIssuesCard(openIssues)
+            issuesCounter.innerText = openIssues.length
+         })
+    }
+
+    else if (id ==="btn-filter-closed"){
+         fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+         .then(res => res.json())
+         .then((data) =>{
+            const closedIssues =data.data.filter(issue =>issue.status ==="closed")
+            
+            displayedIssuesCard(closedIssues)
+            issuesCounter.innerText = closedIssues.length
+
+         })
+    }
+
 }
 
-
-
-
-
-
+loadIssuesCard ()

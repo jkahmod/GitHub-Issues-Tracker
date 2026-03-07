@@ -25,21 +25,38 @@
                 <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>    
         </div>
         <!-- search bar  -->
-        <div>
-            <input type="search">
+        <div >
+            <form action="" class="flex gap-4"> 
+            <label class="input">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke-width="2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input type="search" required placeholder="Search issues..." />
+                </label>
+                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue </button>
+            </form>
         </div>
     </div>
 </header>
 
 <section class=" w-[1600px] mx-auto space-y-10">
     <div class="flex gap-3 border border-gray-200 rounded-[10px] p-5 mt-10"> 
-        <button onclick="filtering('btn-filter-all')"  class="btn bg-[#4A00FF] text-white py-2 px-6 rounded-[10px]" id="btn-filter-all">All</button>
-        <button onclick="filtering('btn-filter-open')" class="btn py-2 px-7 rounded-[10px] " id="btn-filter-open">Open</button>
-        <button onclick="filtering('btn-filter-closed')" class="btn py-2 px-7 rounded-[10px]" id="btn-filter-closed">Closed</button>
+        <button onclick="toggleStyle('btn-filter-all')"  class="btn bg-[#4A00FF] text-white py-2 px-6 rounded-[10px]" id="btn-filter-all">All</button>
+        <button onclick="toggleStyle('btn-filter-open')" class="btn py-2 px-7 rounded-[10px] " id="btn-filter-open">Open</button>
+        <button onclick="toggleStyle('btn-filter-closed')" class="btn py-2 px-7 rounded-[10px]" id="btn-filter-closed">Closed</button>
     </div>
     <div>
         <!-- Issues Count  -->
-        <div class="flex justify-between items-center border rounded-[10px] border-gray-200 p-5 ">
+        <div class="flex  justify-between items-center border rounded-[10px] border-gray-200 p-5 ">
 
             <div class="flex gap-4">
                 <img class="w-[40px] h-[40px] bg-[#ECE4FF] p-1 rounded-full" src="./assets/Aperture.png" alt="">
@@ -58,18 +75,13 @@
             </div>
         </div>
 
-
         <!-- All Issues Card  -->
         <div id="issues-card" class="grid grid-cols-3 gap-5 my-10">
 
         </div>
 
-   
-
 </section>
-
-    
-
+ 
     <script src="./script.js"></script>
 </body>
 </html>
