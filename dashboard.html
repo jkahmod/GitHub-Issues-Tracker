@@ -17,9 +17,59 @@
 
 </head>
 <body>
-    <h2> Deshboard</h2>
+ <header class="shadow">
+    <div class="w-[1600px]  m-auto flex justify-between py-5 items-center"> 
+        <!-- logo section  -->
+        <div class="flex items-center gap-4">
+                <img class="w-[50px]" src="./assets/github-logo.png" alt="">
+                <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>    
+        </div>
+        <!-- search bar  -->
+        <div>
+            <h2>hello</h2>
+        </div>
+    </div>
+</header>
+
+<section class=" w-[1600px] mx-auto space-y-10">
+    <div class="flex gap-3 border border-gray-200 rounded-[10px] p-5 mt-10"> 
+        <button onclick="filtering('btn-filter-all')"  class="btn bg-[#4A00FF] text-white py-2 px-6 rounded-[10px]" id="btn-filter-all">All</button>
+        <button onclick="filtering('btn-filter-open')" class="btn py-2 px-7 rounded-[10px] " id="btn-filter-open">Open</button>
+        <button onclick="filtering('btn-filter-closed')" class="btn py-2 px-7 rounded-[10px]" id="btn-filter-closed">Closed</button>
+    </div>
+    <div>
+        <!-- Issues Count  -->
+        <div class="flex justify-between items-center border rounded-[10px] border-gray-200 p-5 ">
+
+            <div class="flex gap-4">
+                <img class="w-[40px] h-[40px] bg-[#ECE4FF] p-1 rounded-full" src="/assets/Aperture.png" alt="">
+                <div> 
+                    <div> 
+                        <h4 class="text-xl font-bold"> 0 Issues</h4>
+                    </div>
+                    <p>Track and manage your project issues</p>
+                </div>
+                
+            </div>
+            <div class="flex gap-4 text-xl " >
+                    <p> <span class="text-green-600"><i class="fa-solid fa-circle"></i> </span>Open</p>
+                    <p> <span class="text-purple-600"><i class="fa-solid fa-circle"></i> </span>Closed</p>
+                    
+            </div>
+        </div>
+
+
+        <!-- All Issues Card  -->
+        <div id="issues-card" class="grid grid-cols-3 gap-5 my-10">
+
+        </div>
+
+   
+
+</section>
+
     
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
