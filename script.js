@@ -1,10 +1,16 @@
 console.log('cannected') 
 
+const issuesCounter = document.getElementById("counter")
+
 const loadIssuesCard = ()=> {
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(res => res.json())
-    .then((data) => displayedIssuesCard(data.data))      
+    .then((data) => {      
+    displayedIssuesCard(data.data)
+    issuesCounter.innerText=data.data.length;
+})      
 }
+
 
 const allfilterbtn = document.getElementById("btn-filter-all")
 const openfilterbtn = document.getElementById("btn-filter-open")
@@ -26,7 +32,7 @@ const displayedIssuesCard = (issues)=>{
          <div class="border border-gray-200 p-5 space-y-4 shadow-sm rounded-2xl">
                   <!-- 1st  -->
                   <div class="flex justify-between"> 
-                      <p class="bg-green-100 text-green-500 rounded-full px-6 py-1 ">${card.status}</p>
+                      <p class="bg-green-100 text-green-500 rounded-full px-6 py-1 ">${card.status} </p>
                       <p class="bg-red-100 text-red-500 rounded-full px-6 py-1">${card.priority}</p>
   
                   </div>
