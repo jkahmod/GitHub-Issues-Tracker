@@ -6,6 +6,10 @@ const loadIssuesCard = ()=> {
     .then((data) => displayedIssuesCard(data.data))      
 }
 
+const allfilterbtn = document.getElementById("btn-filter-all")
+const openfilterbtn = document.getElementById("btn-filter-open")
+const closedfilterbtn = document.getElementById("btn-filter-closed")
+
 
 const displayedIssuesCard = (issues)=>{
     // console.log(data)
@@ -17,7 +21,7 @@ const displayedIssuesCard = (issues)=>{
         console.log(card);  
 
         const cardDiv =document.createElement("div");
-        // cardDiv.className="grid grid-cols-3 gap-5 my-10"
+        
         cardDiv.innerHTML=`
          <div class="border border-gray-200 p-5 space-y-4 shadow-sm rounded-2xl">
                   <!-- 1st  -->
@@ -59,6 +63,24 @@ const displayedIssuesCard = (issues)=>{
 }
 
 loadIssuesCard ()
+
+function filtering(id){
+    allfilterbtn.classList.remove('bg-black','text-white')
+    openfilterbtn.classList.remove('bg-black','text-white')
+    closedfilterbtn.classList.remove('bg-black','text-white')
+
+    allfilterbtn.classList.add('bg-gray-300','text-black')
+    openfilterbtn.classList.add('bg-gray-300','text-black')
+    closedfilterbtn.classList.add('bg-gray-300','text-black')
+
+    console.log(id)
+
+    const selected = document.getElementById(id)
+
+    selected.classList.add('bg-[#4A00FF]' , 'text-white')
+    selected.classList.remove('bg-gray-300','text-black')
+}
+
 
 
 
