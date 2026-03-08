@@ -7,6 +7,28 @@ const allfilterbtn = document.getElementById("btn-filter-all");
 const openfilterbtn = document.getElementById("btn-filter-open");
 const closedfilterbtn = document.getElementById("btn-filter-closed");
 
+
+// ===============================
+// Search Issues by Title
+// ===============================
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+
+searchBtn.addEventListener("click", async () => {
+    const searchissuee = searchInput.value.trim();
+
+    if(searchissuee === ""){
+        loadIssuesCard();
+        return;
+    }
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${encodeURIComponent(searchissuee)}`);
+    const data = await res.json();
+
+    displayedIssuesCard(data.data);
+    issuesCounter.innerText = data.data.length; 
+});
+
 // ===============================
 // Issues Counter Element
 // ============================
@@ -34,6 +56,7 @@ const loadissuedetail = async(id)=>{
     const details =await res.json();
     displayedIssueDetail(details.data);
 };
+
 
 // ===============================
 // Display Issue Details in Modal
@@ -101,7 +124,7 @@ const displayedIssuesCard = (issues)=>{
 
         <div class="flex justify-between">                     
             ${card.status === "open" ? 
-            `<span class="text-green-500 text-2xl bg-green-100 rounded-full ">  <i class="fa-regular fa-circle"></i></span>`: `<span        class="text-purple-500 text-2xl bg-purple-100   rounded-full "><i class="fa-regular fa-circle-check"></i></span>`}             
+            `<img class="w-[40px]" src="./assets/Open-Status.png" alt="">`: ` <img class="w-[40px]" src="./assets/Closed- Status .png" alt="">`}             
             <p class="bg-red-100 text-red-500 rounded-full px-6 py-1">${card.priority}</p>
         </div>
 
@@ -113,7 +136,7 @@ const displayedIssuesCard = (issues)=>{
         
         <!-- 3rd  -->
         <div class="flex gap-4 ">
-            <p class="text-red-500 bg-red-200 border border-red-300 rounded-full px-4 py-1"> <i class="fa-solid fa-bug"></i>${card.labels[0]}</p>
+            <p class=" text-red-500 bg-red-200 border border-red-300 rounded-full px-4 py-1"> <i class="fa-solid fa-bug"></i>${card.labels[0]}</p>
             <p class="text-orange-500 bg-orange-200 border border-orange-400 rounded-full px-4 py-1"> <i class="fa-solid fa-life-ring"></i>${card.labels[1] ? card.labels[1] :"N/A"}</p>
         </div>
 

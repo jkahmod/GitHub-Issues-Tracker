@@ -16,17 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
 <body>
- <header class="shadow">
-    <div class="w-[1600px]  m-auto flex justify-between py-5 items-center"> 
+
+ <header class="shadow sticky top-0 bg-white/70 backdrop-blur-md">
+    <div class="max-w-7xl m-auto flex justify-between py-5 px-4 items-center"> 
         <!-- logo section  -->
         <div class="flex items-center gap-4">
                 <img class="w-[50px]" src="./assets/github-logo.png" alt="">
-                <h2 class="text-2xl font-bold">GitHub Issues Tracker</h2>    
+                <h2 class="text-sm md:text-lg font-bold">GitHub Issues Tracker</h2>    
         </div>
         <!-- search bar  -->
         <div >
-            <form action="" class="flex gap-4"> 
+            <div action="" class="flex gap-4"> 
             <label class="input">
                 <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
@@ -40,22 +42,23 @@
                     <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="search" required placeholder="Search issues..." />
+                <input id="search-input" type="search" required placeholder="Search issues..." />
                 </label>
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue </button>
-            </form>
+                <button id="search-btn" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue </button>
+            </div>
         </div>
     </div>
 </header>
 
-<section class=" w-[1600px] mx-auto space-y-10">
+<section class=" max-w-7xl py-5 px-2 mx-auto space-y-10">
     <div class="flex gap-3 border border-gray-200 rounded-[10px] p-5 mt-10"> 
         <button onclick="toggleStyle('btn-filter-all')"  class="btn bg-[#4A00FF] text-white py-2 px-6 rounded-[10px]" id="btn-filter-all">All</button>
         <button onclick="toggleStyle('btn-filter-open')" class="btn py-2 px-7 rounded-[10px] " id="btn-filter-open">Open</button>
         <button onclick="toggleStyle('btn-filter-closed')" class="btn py-2 px-7 rounded-[10px]" id="btn-filter-closed">Closed</button>
     </div>
 
-    <div class=" shadow-sm rounded-2xl rounded-2xl ">
+    <div class=" shadow-sm rounded-2xl rounded-2xl space-y-4 ">
+
         <!-- Issues Count  -->
         <div class="flex  justify-between items-center border rounded-2xl border-gray-200 p-5 shadow-sm ">
 
@@ -70,14 +73,16 @@
                 
             </div>
             <div class="flex gap-4 text-xl " >
-                    <p> <span class="text-green-600"><i class="fa-solid fa-circle"></i> </span>Open</p>
-                    <p> <span class="text-purple-600"><i class="fa-solid fa-circle"></i> </span>Closed</p>
+                    <p class="text-[16px]"> <span class="text-green-600 text-[10px]"><i class="fa-solid fa-circle"></i> </span>Open -44 </p>
+                    <p class="text-[16px]"> <span class="text-purple-600 text-[10px]"><i class="fa-solid fa-circle"></i> </span>Closed - 6 </p>
                     
             </div>
         </div>
 
+        <!-- loading Container  -->
+
         <!-- All Issues Card  -->
-        <div id="issues-card" class="grid grid-cols-3 gap-5 my-10 p-5 ">
+        <div id="issues-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  p-3">
         </div>
     </div>
 
@@ -126,6 +131,8 @@
             </div>
         </div>
     </dialog>
+
+
 </section>
  
     <script src="./script.js"></script>
