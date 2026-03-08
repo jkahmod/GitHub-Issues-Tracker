@@ -119,7 +119,7 @@ const displayedIssuesCard = (issues)=>{
     const cardDiv =document.createElement("div");
              
     cardDiv.innerHTML=`
-    <div id="card-${card.id}" onclick="loadissuedetail(${card.id})"  class="border-t-4  border-green-500 p-5 space-y-4 shadow-sm rounded-2xl">
+    <div id="card-${card.id}" onclick="loadissuedetail(${card.id})"  class="border-t-4  border-green-500 p-2 space-y-4 shadow-sm rounded-2xl">
         <!-- 1st  -->
 
         <div class="flex justify-between">                     
@@ -135,9 +135,9 @@ const displayedIssuesCard = (issues)=>{
         </div>
         
         <!-- 3rd  -->
-        <div class="flex gap-4 ">
-            <p class=" text-red-500 bg-red-200 border border-red-300 rounded-full px-4 py-1"> <i class="fa-solid fa-bug"></i>${card.labels[0]}</p>
-            <p class="text-orange-500 bg-orange-200 border border-orange-400 rounded-full px-4 py-1"> <i class="fa-solid fa-life-ring"></i>${card.labels[1] ? card.labels[1] :"N/A"}</p>
+        <div class="flex gap-4 justify-between">
+            <p class=" text-red-500 text-sm bg-red-200 border border-red-300 rounded-full px-4 py-1"> <i class="fa-solid fa-bug"></i>${card.labels[0]}</p>
+            <p class="text-orange-500 text-[12px] bg-orange-200 border border-orange-400 rounded-full px-4 py-1"> <i class="fa-solid fa-life-ring"></i>${card.labels[1] ? card.labels[1] :"N/A"}</p>
         </div>
 
         <hr class="border-gray-300">
