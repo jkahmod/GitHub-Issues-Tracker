@@ -109,6 +109,7 @@ const displayedIssueDetail =(card) =>{
     `;
 
     document.getElementById("my_modal").showModal() ; 
+    
 }
 
 // ===============================
@@ -131,7 +132,7 @@ const displayedIssuesCard = (issues)=>{
         <div class="flex justify-between">                     
             ${card.status === "open" ? 
             `<img class="w-[40px]" src="./assets/Open-Status.png" alt="">`: ` <img class="w-[40px]" src="./assets/Closed- Status .png" alt="">`}             
-            <p class="bg-red-100 text-red-500 rounded-full px-6 py-1">${card.priority}</p>
+            <p id="priority-${card.id}" class="bg-red-100 text-red-500 rounded-full px-6 py-1">${card.priority}</p>
         </div>
 
         <!-- 2nd  -->
@@ -162,12 +163,27 @@ const displayedIssuesCard = (issues)=>{
         
     `;
 
-    issuesCard.appendChild(cardDiv);  
+    issuesCard.appendChild(cardDiv); 
+
     const cardbdr =document.getElementById(`card-${card.id}`)
     if(card.status === "closed"){
       cardbdr.classList.remove("border-green-500")
       cardbdr.classList.add("border-[#AD46FF]")        
     }
+
+    const cardPriority = document.getElementById(`priority-${card.id}`);
+
+        cardPriority.classList.remove("bg-red-100","text-red-500","bg-yellow-100","text-yellow-500","bg-green-100","text-green-500","bg-gray-100","text-gray-500");
+
+        if(card.priority === "high"){
+            cardPriority.classList.add("bg-red-100", "text-red-500");
+        } 
+        else if(card.priority === "medium"){
+            cardPriority.classList.add("bg-yellow-100", "text-yellow-500");
+        } 
+        else if(card.priority === "low"){
+            cardPriority.classList.add("bg-gray-100", "text-gray-500");
+        } 
 
     }); 
 };
