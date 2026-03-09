@@ -47,6 +47,12 @@ const loadIssuesCard = ()=> {
 };
 
 // ===============================
+// Loading Element
+// ===============================
+const loading = document.getElementById("loading");
+
+
+// ===============================
 // Load Single Issue Detail
 // ===============================
 const loadissuedetail = async(id)=>{
@@ -184,6 +190,36 @@ function toggleStyle(id){
 
     selected.classList.add('bg-[#4A00FF]' , 'text-white')
     selected.classList.remove('bg-gray-300','text-black')
+
+    // Loading Element --
+
+    if(id === "btn-filter-all" || id === "btn-filter-open" || id === "btn-filter-closed"){
+
+    loading.classList.remove("hidden");
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then(res => res.json())
+    .then((data)=>{
+
+        let issues = data.data;
+      
+        if(id === "btn-filter-open"){
+            issues = issues.filter(issue => issue.status === "open")
+        }
+
+        if(id === "btn-filter-closed"){
+            issues = issues.filter(issue => issue.status === "closed")
+        }
+
+        setTimeout(()=>{
+
+            displayedIssuesCard(issues)
+            issuesCounter.innerText = issues.length
+
+            loading.classList.add("hidden")
+        },1000)
+    })
+    
+    }
 
     
     if(id === "btn-filter-all"){
